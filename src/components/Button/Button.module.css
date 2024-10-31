@@ -1,0 +1,10 @@
+.addToCart {
+  display: inline-flex;
+  align-items: center;
+  color: red;
+}
+
+img {
+  width: 2em;
+  margin-right: 25px;
+}
