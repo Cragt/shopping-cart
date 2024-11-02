@@ -9,3 +9,11 @@
   right: 0;
 }
 
+.cards {
+  display: grid;
+  gap: 20px;
+  grid-template: 
+  "a b c"
+  "d e f"
+  "g h i"
+}
