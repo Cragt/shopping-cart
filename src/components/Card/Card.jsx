@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Button from "../Button/Button";
 import styles from "./Card.module.css";
 
-export default function Card({ id }) {
+export default function Card({ id, setItemsInCart }) {
   const [item, setItem] = useState(null);
 
   useEffect(() => {
@@ -14,6 +14,10 @@ export default function Card({ id }) {
       .catch((error) => console.error("Error fetching data:", error));
   }, [id]);
 
+  const handleAddToCart = () => {
+    setItemsInCart((prevCart) => [...prevCart, item]);
+  };
+
   if (!item) {
     return <div>Loading...</div>;
   }
@@ -21,7 +25,13 @@ export default function Card({ id }) {
   return (
     <div className={styles.card}>
       <img className={styles.image} src={item.image} alt={item.title} />
-      <Button className={styles.btn} name={"add to cart"} />
+      <h3>{item.title}</h3>
+      <p>{item.price}</p>
+      <Button
+        className={styles.btn}
+        name={"Add to Cart"}
+        onClick={handleAddToCart}
+      />
     </div>
   );
 }
