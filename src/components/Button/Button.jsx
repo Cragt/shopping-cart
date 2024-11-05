@@ -1,11 +1,11 @@
 import styles from "./Button.module.css";
 import CartLogo from "./shopping-cart.svg";
 
-export default function Button(props) {
+export default function Button({ name, onClick }) {
   return (
-    <button className={styles.addToCart}>
-      <img src={CartLogo}></img>
-      {props.name}
+    <button className={styles.addToCart} onClick={onClick}>
+      <img src={CartLogo} alt="Cart"></img>
+      {name}
     </button>
   );
 }
