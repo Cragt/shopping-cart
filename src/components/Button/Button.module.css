@@ -1,7 +1,7 @@
 .addToCart {
   display: inline-flex;
   align-items: center;
-  color: red;
+  color: rgb(150, 150, 150);
 }
 
 img {
