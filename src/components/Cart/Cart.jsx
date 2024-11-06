@@ -1,7 +1,10 @@
 import Card from "../Card/Card";
 import styles from "../Card/Card.module.css";
+import { useCart } from "../../CartContext";
+import NavBar from "../Nav Bar/NavBar";
 
-export default function ShoppingCart({ itemsInCart }) {
+export default function ShoppingCart() {
+  const { itemsInCart } = useCart();
   return (
     <div>
       <h2>Shopping Cart</h2>
@@ -19,6 +22,7 @@ export default function ShoppingCart({ itemsInCart }) {
           </p>
         </div>
       )}
+      <NavBar />
     </div>
   );
 }

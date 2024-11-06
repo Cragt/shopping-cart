@@ -1,12 +1,17 @@
+// App.jsx
 import { useState } from "react";
 import "./App.css";
 import NavBar from "./components/Nav Bar/NavBar";
 import Card from "./components/Card/Card";
 import styles from "./App.module.css";
-import ShoppingCart from "./components/Cart/Cart";
+import { useCart } from "./CartContext";
 
 function App() {
-  const [itemsInCart, setItemsInCart] = useState([]);
+  const { itemsInCart, setItemsInCart } = useCart();
+
+  if (!itemsInCart || !setItemsInCart) {
+    console.error("Error: itemsInCart or setItemsInCart is undefined");
+  }
 
   const cards = [];
 
@@ -25,7 +30,6 @@ function App() {
     <div className={styles.page}>
       <NavBar className={styles.nav} />
       <div className={styles.cards}>{cards}</div>
-      <ShoppingCart itemsInCart={itemsInCart} />
     </div>
   );
 }

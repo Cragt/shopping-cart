@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import Button from "../Button/Button";
 import styles from "./Card.module.css";
+import { useCart } from "../../CartContext";
 
-export default function Card({ id, setItemsInCart }) {
+export default function Card({ id }) {
   const [item, setItem] = useState(null);
+  const { setItemsInCart } = useCart();
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
