@@ -1,5 +1,5 @@
 import styles from "./Button.module.css";
-import CartLogo from "./shopping-cart.svg";
+import CartLogo from "../Assets/shopping-cart.svg";
 
 export default function Button({ name, onClick }) {
   return (
