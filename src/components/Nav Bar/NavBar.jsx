@@ -9,7 +9,10 @@ export default function NavBar({ className }) {
           <Link to={`/`}>Home</Link>
         </li>
         <li>
-          <Link to={`cart`}>View Cart</Link>
+          <Link to={`/shop`}>Shop</Link>
+        </li>
+        <li>
+          <Link to={`/cart`}>View Cart</Link>
         </li>
       </ul>
     </nav>
