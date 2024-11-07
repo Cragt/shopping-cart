@@ -12,8 +12,12 @@
 .cards {
   display: grid;
   gap: 20px;
-  grid-template: 
-  "a b c"
-  "d e f"
-  "g h i"
+  grid-template:
+    "a b c"
+    "d e f"
+    "g h i";
+}
+
+.mickeyImage {
+  width: 1009px;
 }
