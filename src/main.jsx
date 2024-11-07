@@ -5,15 +5,20 @@ import "./index.css";
 import ShoppingCart from "./components/Cart/Cart.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { CartProvider } from "./CartContext.jsx";
+import Home from "./Home.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Home />,
   },
   {
-    path: "cart",
+    path: "/cart",
     element: <ShoppingCart />,
+  },
+  {
+    path: "/shop",
+    element: <App />,
   },
 ]);
 
