@@ -1,12 +1,13 @@
 import Card from "../Card/Card";
-import styles from "../Card/Card.module.css";
 import { useCart } from "../../CartContext";
 import NavBar from "../Nav Bar/NavBar";
+import styles from "../../App.module.css";
 
 export default function ShoppingCart() {
   const { itemsInCart } = useCart();
   return (
-    <div>
+    <div className={styles.page}>
+      <NavBar />
       <h2>Shopping Cart</h2>
       {itemsInCart.length === 0 ? (
         <p>Your cart is empty.</p>
@@ -22,7 +23,6 @@ export default function ShoppingCart() {
           </p>
         </div>
       )}
-      <NavBar />
     </div>
   );
 }
