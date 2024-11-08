@@ -27,7 +27,7 @@ function App() {
 
   return (
     <div className={styles.page}>
-      <NavBar className={styles.nav} />
+      <NavBar />
       <div className={styles.cards}>{cards}</div>
     </div>
   );
