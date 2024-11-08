@@ -1,8 +1,13 @@
+import { useState } from "react";
 import styles from "./NavBar.module.css";
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useCart } from "../../CartContext";
 
 export default function NavBar({ className }) {
+  const { itemsInCart, setItemsInCart } = useCart();
+  let count = itemsInCart.length;
   return (
+    <div>
     <nav className={`${styles.navBar} ${className}`}>
       <ul>
         <li>
@@ -12,9 +17,10 @@ export default function NavBar({ className }) {
           <Link to={`/shop`}>Shop</Link>
         </li>
         <li>
-          <Link to={`/cart`}>View Cart</Link>
+          <Link to={`/cart`}>View Cart ({count})</Link>
         </li>
       </ul>
     </nav>
+    </div>
   );
 }
