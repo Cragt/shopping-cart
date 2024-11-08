@@ -1,7 +1,9 @@
 import NavBar from "./components/Nav Bar/NavBar";
 import styles from "./App.module.css";
+import { useCart } from "./CartContext";
 
 export default function Home() {
+  
   return (
     <div>
       <div>
