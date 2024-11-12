@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import Button from "../Button/Button";
 import styles from "./Card.module.css";
 import { useCart } from "../../CartContext";
+import { useLocation } from "react-router-dom";
 
 export default function Card({ id }) {
   const [item, setItem] = useState(null);
-  const { setItemsInCart } = useCart();
+  const { itemsInCart, setItemsInCart } = useCart();
+  const location = useLocation();
+  const [inputValue, setInputValue] = useState(1);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -16,13 +19,28 @@ export default function Card({ id }) {
       .catch((error) => console.error("Error fetching data:", error));
   }, [id]);
 
-  const handleAddToCart = () => {
-    setItemsInCart((prevCart) => [...prevCart, item]);
+  const isItemInCart = itemsInCart.some((cartItem) => cartItem.id === item?.id);
+
+  const handleCartAction = () => {
+    
+    if (isItemInCart) {
+      setItemsInCart((prevCart) =>
+        prevCart.filter((cartItem) => cartItem.id !== item.id)
+    );
+  } else {
+      for ( let i = 0; i < inputValue; i++) {
+      setItemsInCart((prevCart) => [...prevCart, item]);
+    }
+  }
   };
 
   if (!item) {
     return <div>Loading...</div>;
   }
+
+  const handleChange = (event) => {
+    setInputValue(event.target.value);
+  };
 
   return (
     <div className={styles.card}>
@@ -31,9 +49,11 @@ export default function Card({ id }) {
       <p>{item.price}</p>
       <Button
         className={styles.btn}
-        name={"Add to Cart"}
-        onClick={handleAddToCart}
+        name={isItemInCart ? "Remove from Cart" : "Add to Cart"}
+        onClick={handleCartAction}
       />
+      {!isItemInCart ? <input type="number" value={inputValue} onChange={handleChange}></input> : ""}
+      
     </div>
   );
 }
