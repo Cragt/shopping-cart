@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./App.css";
 import NavBar from "./components/Nav Bar/NavBar";
 import Card from "./components/Card/Card";
@@ -27,7 +26,7 @@ function App() {
 
   return (
     <div className={styles.page}>
-      <NavBar />
+      <NavBar className={styles.nav} />
       <div className={styles.cards}>{cards}</div>
     </div>
   );
