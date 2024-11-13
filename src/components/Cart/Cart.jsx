@@ -7,17 +7,15 @@ export default function ShoppingCart() {
   const { itemsInCart } = useCart();
   return (
     <div className={styles.page}>
-      <NavBar />
+      <NavBar className={styles.nav} />
       <h2>Shopping Cart</h2>
       {itemsInCart.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
-        <div>
-          <ul>
-            {itemsInCart.map((item, index) => (
-              <Card className={styles.cards} key={index} id={item.id - 1} />
-            ))}
-          </ul>
+        <div className={styles.cards}>
+          {itemsInCart.map((item, index) => (
+            <Card key={index} id={item.id - 1} />
+          ))}
           <p>
             Total: ${itemsInCart.reduce((acc, item) => acc + item.price, 0)}
           </p>
